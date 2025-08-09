@@ -26,6 +26,15 @@ func main() {
 		saveToCpwnFile(os.Args[2])
 		return
 	}
+	if os.Args[1] == "-l" {
+		if len(os.Args) < 3 {
+			fmt.Println("Usage: cpwn -l <lib>")
+			return
+		}
+		libpath, err := filepath.Abs(os.Args[2])
+		checkErr("libpath", err)
+		Putv(libpath)
+	}
 	file := os.Args[1]
 	version := "0"
 	if len(os.Args) > 2 {
@@ -39,6 +48,34 @@ func main() {
 }
 
 // ---------- 核心路径和配置读取 -----------
+// Putv 读取 libc 文件的版本信息
+func Putv(libPath string) {
+	// 用 strings 命令 + grep
+	cmd := exec.Command("strings", libPath)
+	pipe, err := cmd.StdoutPipe()
+	checkErr("Error creating pipe", err)
+
+	if err := cmd.Start(); err != nil {
+		logFail("Error starting strings: " + err.Error())
+		return
+	}
+
+	scanner := bufio.NewScanner(pipe)
+	found := false
+	for scanner.Scan() {
+		line := scanner.Text()
+		if strings.Contains(line, "Ubuntu GLIBC") {
+			fmt.Println(line)
+			found = true
+		}
+	}
+	if err := cmd.Wait(); err != nil {
+		logFail("Error waiting for strings: " + err.Error())
+	}
+	if !found {
+		logInfo("No Ubuntu GLIBC string found in " + libPath)
+	}
+}
 
 func getCpwnPath() string {
 	home, err := os.UserHomeDir()
