@@ -26,7 +26,6 @@ func main() {
 		saveToCpwnFile(os.Args[2])
 		return
 	}
-
 	file := os.Args[1]
 	version := "0"
 	if len(os.Args) > 2 {
