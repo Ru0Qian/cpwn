@@ -57,20 +57,6 @@ go build -o cpwn
 
 基础目录 `.cpwn` 里结构应如下（通过 `-s` 设置）：
 
-```
-~/.cpwn/
-├── libs/
-│   ├── 2.27-amd64/
-│   │   ├── libc.so.6
-│   │   ├── ld-linux-x86-64.so.2
-│   │   └── .debug/
-│   └── ...
-├── list
-├── old_list
-├── download
-└── download_old
-```
-
 - `list` 和 `old_list`: 包含所有可用 glibc 版本名的文本列表
 - `download` / `download_old`: 用于下载和解压指定版本的脚本
 
@@ -85,7 +71,7 @@ go build -o cpwn
 
 ## 📜 License
 
-MIT License © 2025 [yourname](https://github.com/yourname)
+MIT License © 2025 [Ruoqian](https://github.com/yourname)
 
 ---
 
