@@ -12,7 +12,7 @@
 - ✅ 支持指定 glibc 版本并自动修复 ELF
 - ✅ 支持 `.cpwn` 配置，统一管理 glibc 库路径
 - ✅ 支持 fallback 到旧版本列表（`old_list`）
-- ✅ 自动 flatten `.build-id` 符号到 `.debug/` 目录，兼容 GDB 调试
+- ✅ 自动 自动修复符号表，兼容 GDB 调试
 
 ---
 
