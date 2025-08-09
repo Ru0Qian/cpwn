@@ -31,7 +31,7 @@ go build -o cpwn
 ### 设置 glibc 基础目录（例如你的 glibc 库放在 `/opt/glibc`）
 
 ```bash
-./cpwn -s /opt/glibc
+./cpwn -s 你的glibc-all-in-one目录
 ```
 
 ### 修复 ELF 可执行文件使用指定 glibc 版本：
