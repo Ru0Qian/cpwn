@@ -71,7 +71,7 @@ go build -o cpwn
 
 ## 📜 License
 
-MIT License © 2025 [Ruoqian](https://github.com/yourname)
+MIT License © 2025 [Ruoqian](https://github.com/Ru0qian)
 
 ---
 
